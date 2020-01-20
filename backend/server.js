@@ -1,32 +1,26 @@
 const express = require("express"); 
 const cors = require("cors");
 const mongoose = require("mongoose");
-const mongojs = require("mongojs")
+const logger = require("morgan");
+// var db = require("./models");
+
+
 
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(logger("dev"));
+app.use(express.urlencoded({ extended: true }));
+mongoose.connect("mongodb://localhost/fitness-tracker", { useNewUrlParser: true });
 
-// Database configuration
-// Save the URL of our database as well as the name of our collection
-var databaseUrl = "fitness-tracker";
-var collections = [""];
+const exerciseRouter = require("./routes/exercise");
+const usersRouter = require("./routes/user");
 
-// Use mongojs to hook the database to the db variable
-var db = mongojs(databaseUrl, collections);
 
-// This makes sure that any errors are logged if mongodb runs into an issue
-db.on("error", function(error) {
-    console.log("Database Error:", error);
-  });
-  
-  db.on("connect", function() {
-    console.log("Database Connected:");
-});
 
 app.listen(port, () => {
     console.log(`server is running on port: ${port}`)
