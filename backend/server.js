@@ -13,7 +13,7 @@ app.use(express.json());
 
 // Database configuration
 // Save the URL of our database as well as the name of our collection
-var databaseUrl = "";
+var databaseUrl = "fitness-tracker";
 var collections = [""];
 
 // Use mongojs to hook the database to the db variable
@@ -27,7 +27,6 @@ db.on("error", function(error) {
   db.on("connect", function() {
     console.log("Database Connected:");
 });
-
 
 app.listen(port, () => {
     console.log(`server is running on port: ${port}`)
