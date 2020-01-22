@@ -17,11 +17,16 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 mongoose.connect("mongodb://localhost:27017/fitness-tracker", { useNewUrlParser: true });
 
-const exerciseRouter = require("./routes/exercise");
-const usersRouter = require("./routes/users");
+const exerciseRouter = require("./routes/exerciseRouter");
+const usersRouter = require("./routes/usersRouter");
 
 app.use('/exercises', exerciseRouter);
 app.use('/users', usersRouter);
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully");
+})
 
 
 app.listen(port, () => {
