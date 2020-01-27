@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 export default class CreateExercise extends Component {
@@ -64,8 +65,9 @@ export default class CreateExercise extends Component {
             date:this.state.date
 
         } 
+        // window.location = "/";
         console.log(exercise);
-        window.location = "/";
+        
     };
 
     render() {
@@ -84,7 +86,8 @@ export default class CreateExercise extends Component {
                     this.state.users.map(function(user) {
                       return <option 
                         key={user}
-                        value={user}>{user}
+                        value={user}>
+                          {user}
                         </option>;
                     })
                   }
