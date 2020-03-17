@@ -15,7 +15,15 @@ app.use(cors());
 app.use(express.json());
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
-mongoose.connect("mongodb://localhost:27017/fitness-tracker", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost:27017/fitness-tracker", { useNewUrlParser: true });
+
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/fitness-tracker",
+  {
+    useMongoClient: true,
+    useNewUrlParser: true
+  }
+);
 
 const exerciseRouter = require("./routes/exerciseRouter");
 const usersRouter = require("./routes/usersRouter");
