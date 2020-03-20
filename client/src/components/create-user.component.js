@@ -37,7 +37,7 @@ export default class CreateUser extends Component {
     }
     console.log(user);
 
-    Axios.post('http://localhost:5000/users/add', user)
+    Axios.post('http://localhost:3001/users/add', user)
     .then(res => console.log(res.data));
 
     this.setState({
