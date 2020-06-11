@@ -27,8 +27,10 @@ if (process.env.NODE_ENV === "production") {
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost:27017/fitness-tracker",
   {
-    useNewUrlParser: true
-  }
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
+  console.log("Mlab connection")
 );
 
 const exerciseRouter = require("./routes/exerciseRouter");
