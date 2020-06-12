@@ -2,12 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./client/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server.js",
+    "start": "nodemon backend/server.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run start\" \"npm run client\"",
+    "install": "cd client && npm install",
+    "dev": "concurrently -n 'server,client' -c 'red,green' \"npm start\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],

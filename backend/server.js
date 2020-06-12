@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const logger = require("morgan");
-// var db = require("./models");
+
 
 
 
@@ -13,9 +13,11 @@ const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
+
+
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
-// mongoose.connect("mongodb://localhost:27017/fitness-tracker", { useNewUrlParser: true });
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   const path = require('path');
