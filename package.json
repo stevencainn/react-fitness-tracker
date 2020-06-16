@@ -1,27 +1,24 @@
 {
-  "name": "backend",
+  "name": "react-fitness-tracker-v2-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "./client/src/index.js",
+  "description": "server",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon backend/server.js",
-    "client": "npm run start --prefix client",
-    "install": "cd client && npm install",
-    "dev": "concurrently -n 'server,client' -c 'red,green' \"npm start\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client        && npm run build --prefix client"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "concurrently": "^5.1.0",
+    "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.8.9",
-    "morgan": "^1.9.1",
-    "path": "^0.12.7",
-    "react-scripts": "^3.4.1"
+    "mongoose": "^5.9.18"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1"
   }
 }
