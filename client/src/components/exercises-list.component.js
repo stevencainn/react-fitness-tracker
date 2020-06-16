@@ -45,10 +45,16 @@ export default class ExercisesList extends Component {
   }
 
   exerciseList(){
-    return this.state.exercises.map(currentexercise =>{
-      return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
-    })
+    return JSON.stringify(this.state.exercises.map);
   }
+
+  // exerciseList(){
+  //   return this.state.exercises.map(currentexercise =>{
+  //     return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
+  //   })
+  // }
+
+
 
   render() {
     return (
