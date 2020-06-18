@@ -7,6 +7,10 @@ const port = process.env.PORT || 5000;
 
 require('dotenv').config();
 
+//db connection 
+const URI = require('./config');
+require('./models');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
