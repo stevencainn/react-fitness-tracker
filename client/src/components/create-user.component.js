@@ -8,8 +8,9 @@ export default class CreateUser extends Component {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onChangePassword = this.onChangeUsername.bind(this);
+    
 
     this.state = {
       username: "",
@@ -20,8 +21,8 @@ export default class CreateUser extends Component {
   componentDidMount() {
     this.setState({
       users: ["test user"],
-      username: "testuser",
-      password: "testPassword"
+      username: "",
+      password: ""
       
     })
   }
@@ -86,7 +87,7 @@ export default class CreateUser extends Component {
                 />
           </div>
           <div className="form-group">
-            <input type="submit" value="Create Password" className="btn btn-primary" />
+            <input type="submit" value="Create User" className="btn btn-primary" />
           </div>
         </form>
       </div>
