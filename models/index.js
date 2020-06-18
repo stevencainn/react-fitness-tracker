@@ -1,6 +1,6 @@
 //models index
 const mongoose = require('mongoose');
-const URI = require('./config');
+const URI = require('../config');
 
 
 mongoose.connect(process.env.MONGODB_URI || URI,
