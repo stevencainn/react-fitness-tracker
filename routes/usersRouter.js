@@ -28,8 +28,6 @@ router.route('/update/:id').post((req, res) =>{
     .then(User => {
         User.username = req.body.username;
 
-      
-
         User.save()
         .then(() => res.json("exercise updated!"))
         .catch(err => res.status(400).json('error:  ', err))
