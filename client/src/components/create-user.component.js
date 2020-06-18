@@ -66,15 +66,6 @@ export default class CreateUser extends Component {
                 onChange={this.onChangeUsername}
                 />
           </div>
-          <div className="form-group"> 
-            <label>Password: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-                />
-          </div>
           <div className="form-group">
             <input type="submit" value="Create User" className="btn btn-primary" />
           </div>
