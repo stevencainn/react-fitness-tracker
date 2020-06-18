@@ -1,18 +1,18 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
-
+const exercisesRouter = require('./routes/exerciseRouter');
+const usersRouter = require('./routes/usersRouter');
 const app = express();
 const port = process.env.PORT || 5000;
 
-require('dotenv').config();
-
 //db connection 
-const URI = require('./config');
 require('./models');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/exercises', exercisesRouter);
+app.use('/users', usersRouter);
+app.use(cors());
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -25,31 +25,6 @@ if (process.env.NODE_ENV === 'production') {
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
  });
 }
-
-
-mongoose.connect(
- process.env.MONGODB_URI,
- {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
- }
-);
-
-const connection = mongoose.connection;
-connection.once('open', () => {
- console.log('Connected to mLab MongoDB Database successfully');
-})
-
-const exercisesRouter = require('./routes/exerciseRouter');
-const usersRouter = require('./routes/usersRouter');
-
-app.use('/exercises', exercisesRouter);
-app.use('/users', usersRouter);
-
-app.use(cors());
-
-
-
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
