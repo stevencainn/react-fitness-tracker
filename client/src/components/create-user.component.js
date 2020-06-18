@@ -9,16 +9,20 @@ export default class CreateUser extends Component {
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onChangePassword = this.onChangeUsername.bind(this);
 
     this.state = {
       username: "",
+      password: ""
     }
   }
 
   componentDidMount() {
     this.setState({
       users: ["test user"],
-      username: "test user"
+      username: "testuser",
+      password: "testPassword"
+      
     })
   }
 
@@ -28,12 +32,19 @@ export default class CreateUser extends Component {
     });
   }
 
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value
+    });
+  }
+
   onSubmit(e) {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
 
     const user = {
       username: this.state.username,
+      password: this.state.password
     }
     console.log(user);
 
@@ -42,6 +53,7 @@ export default class CreateUser extends Component {
 
     this.setState({
       username: "",
+      password: ""
     })
 
 
@@ -64,8 +76,17 @@ export default class CreateUser extends Component {
                 onChange={this.onChangeUsername}
                 />
           </div>
+          <div className="form-group"> 
+            <label>Password: </label>
+            <input  type="text"
+                required
+                className="form-control"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+                />
+          </div>
           <div className="form-group">
-            <input type="submit" value="Create User" className="btn btn-primary" />
+            <input type="submit" value="Create Password" className="btn btn-primary" />
           </div>
         </form>
       </div>
