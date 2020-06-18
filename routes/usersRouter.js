@@ -13,7 +13,7 @@ router.route('/add').post((req, res) =>{
 
     newUser.save()
     .then(() => res.json('User Added!!'))
-    .catch(err => res.status(400).json('Error:  ', err));
+    .catch(err => res.status(400).json(err))
 });
 
 //delete request to delete exercise based on ID

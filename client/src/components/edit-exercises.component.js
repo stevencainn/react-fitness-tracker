@@ -36,7 +36,7 @@ export default class EditExercise extends Component {
         console.log(error);
       })
 
-    axios.get('/users/')
+    axios.get('/users')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
