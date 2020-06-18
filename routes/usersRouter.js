@@ -17,4 +17,26 @@ router.route('/add').post((req, res) =>{
     .catch(err => res.status(400).json('Error:  ', err));
 });
 
+//delete request to delete exercise based on ID
+router.route('/:id').delete((req, res) =>{
+    User.findByIdAndDelete(req.params.id)
+    .then(() => res.json("User deleted"))
+    .catch(err => res.status(400).json('error:  ', err));
+});
+
+router.route('/update/:id').post((req, res) =>{
+    User.findById(req.params.id)
+    .then(User => {
+        User.username = req.body.username;
+        User.password = req.body.password;
+
+      
+
+        User.save()
+        .then(() => res.json("exercise updated!"))
+        .catch(err => res.status(400).json('error:  ', err))
+    })
+    .catch(err => res.status(400).json('error:  ', err));
+});
+
 module.exports = router;
