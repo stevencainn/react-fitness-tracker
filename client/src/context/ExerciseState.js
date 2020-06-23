@@ -1,8 +1,8 @@
-// GlobalState.js
+// ExerciseState.js
 
 
 import React, { createContext, useReducer } from 'react';
-import AppReducer from './AppReducer';
+import ExerciseReducer from './ExerciseReducer';
 import axios from 'axios';
 
 // Initial state
@@ -17,7 +17,7 @@ export const ExerciseContext = createContext(initialState);
 
 // Provider component
 export const ExerciseProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(AppReducer, initialState);
+    const [state, dispatch] = useReducer(ExerciseReducer, initialState);
 
     Actions
     async function getExercises() {
@@ -90,18 +90,17 @@ export const ExerciseProvider = ({ children }) => {
     }
 
 
-
-//  return (<GlobalContext.Provider value={{
-//   transactions: state.transactions,
-//   error: state.error,
-//   loading: state.loading,
-//   getTransactions,
-//   deleteTransaction,
-//   addTransaction
-//  }}>
-//   {children}
-//  </GlobalContext.Provider>);
-// }
+    return (<ExerciseContext.Provider value={{
+        exercises: state.exercises,
+        error: state.error,
+        loading: state.loading,
+        getExercises,
+        getExerciseById,
+        addExercise,
+        deleteExercise
+    }}>
+        {children}
+       </ExerciseContext.Provider>);
 
 
 
