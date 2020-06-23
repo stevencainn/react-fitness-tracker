@@ -19,7 +19,6 @@ export const UserContext = createContext(initialState);
 export const UserProvider = ({ children }) => {
     const [state, dispatch] = useReducer(UserReducer, initialState);
 
-    Actions
     async function getUsers() {
         try {
             const res = await axios.get('/users');
@@ -59,22 +58,6 @@ export const UserProvider = ({ children }) => {
             });
         }
     }
-
-    // async function deleteExercise(id) {
-    //     try {
-    //         await axios.delete(`/exercises/${id}`);
-
-    //         dispatch({
-    //             type: 'DELETE_EXERCISE',
-    //             payload: id
-    //         });
-    //     } catch (err) {
-    //         dispatch({
-    //             type: 'DELETE_EXERCISE_ERROR',
-    //             payload: err.response.data.error
-    //         });
-    //     }
-    // }
 
 
     return (<UserContext.Provider value={{

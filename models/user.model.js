@@ -7,7 +7,7 @@ var UserSchema = new Schema({
     // `name` must be unique and of type String
     username: {
       type: String,
-      required: true,
+      required: [true, 'please add username'],
       unique: true,
       trim: true,
       minlength: 3
