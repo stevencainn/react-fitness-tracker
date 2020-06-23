@@ -101,6 +101,4 @@ export const ExerciseProvider = ({ children }) => {
     }}>
         {children}
        </ExerciseContext.Provider>);
-
-
-
+}

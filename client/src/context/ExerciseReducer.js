@@ -1,4 +1,4 @@
-// AppReducer.js
+// ExerciseReducer.js
 
 export default (state, action) => {
     switch (action.type) {
