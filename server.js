@@ -1,18 +1,22 @@
+// server.js
+// declaring variables
 const express = require('express');
 const cors = require('cors');
+const app = express();
+// const port = process.env.PORT || 5000;
+const port = 5000;
 const exercisesRouter = require('./routes/exerciseRouter');
 const usersRouter = require('./routes/usersRouter');
-const app = express();
-const port = process.env.PORT || 5000;
 
-//db connection 
+require('dotenv').config();
+
+// db connection
 require('./models');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/exercises', exercisesRouter);
-app.use('/users', usersRouter);
 app.use(cors());
+
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -26,6 +30,8 @@ if (process.env.NODE_ENV === 'production') {
  });
 }
 
+// defining routes
+app.use('/exercises', exercisesRouter);
+app.use('/users', usersRouter);
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
-

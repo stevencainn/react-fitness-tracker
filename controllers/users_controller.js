@@ -1,6 +1,6 @@
 // users_controller.js
 
-const User = require('../models/user.model');
+const User = require("../models/user.model");
 
 exports.getUsers = async (req, res, next) => {
  try {
@@ -14,14 +14,14 @@ exports.getUsers = async (req, res, next) => {
  } catch (err) {
   return res.status(500).json({
    success: false,
-   error: 'Server Error'
+   error: '.:.:SERVER ERROR:.:.'
   });
  }
 }
 
 exports.addUser = async (req, res, next) => {
  try {
-  const {username}  = req.body;
+  const { username } = req.body;
 
   const user = await User.create(req.body);
 
@@ -40,7 +40,7 @@ exports.addUser = async (req, res, next) => {
   } else {
    return res.status(500).json({
     success: false,
-    error: 'Server Error'
+    error: err
    });
   }
  }
