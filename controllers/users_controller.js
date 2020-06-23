@@ -40,7 +40,7 @@ exports.addUser = async (req, res, next) => {
   } else {
    return res.status(500).json({
     success: false,
-    error: err
+    error: '.:SERVER ERROR:.'
    });
   }
  }

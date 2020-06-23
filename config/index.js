@@ -1,3 +1,5 @@
+// config/index.js
+
 const dbUser = `fitness`;
 const dbPassword = `fitness1`;
 

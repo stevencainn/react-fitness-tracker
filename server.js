@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 // const port = process.env.PORT || 5000;
 const port = 5000;
-const exercisesRouter = require('./routes/exerciseRouter');
+const exercisesRouter = require('./routes/exercisesRouter');
 const usersRouter = require('./routes/usersRouter');
 
 require('dotenv').config();
@@ -35,3 +35,5 @@ app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+

@@ -1,21 +1,20 @@
-//models index
+// models/index.js
+
 const mongoose = require('mongoose');
 const URI = require('../config');
 
-
-mongoose.connect(process.env.MONGODB_URI || URI,
-    {
-     useNewUrlParser: true,
-     useUnifiedTopology: true
-    }
-);
-
-//when succesfully connected
-mongoose.connection.on('connected', () => {
-    console.log('Established Mongoose Default Connection');
+mongoose.connect(process.env.MONGODB_URI || URI, {
+ useNewUrlParser: true,
+ useUnifiedTopology: true,
+ useCreateIndex: true
 });
 
-//when connection error 
+// When successfully connected
+mongoose.connection.on('connected', () => {
+ console.log('Established Mongoose Default Connection');
+});
+
+// When connection throws an error
 mongoose.connection.on('error', err => {
-    console.log('Mongoose Default Connection Error : ' + err);
+ console.log('Mongoose Default Connection Error : ' + err);
 });

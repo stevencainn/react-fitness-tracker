@@ -32,9 +32,7 @@ export default class EditExercise extends Component {
           date: new Date(response.data.date)
         })   
       })
-      .catch(function (error) {
-        console.log(error);
-      })
+      .catch(err => console.log(err));
 
     axios.get('/users')
       .then(response => {
@@ -44,9 +42,7 @@ export default class EditExercise extends Component {
           })
         }
       })
-      .catch((error) => {
-        console.log(error);
-      })
+      .catch(err => console.log(err));
 
   }
 
@@ -106,10 +102,10 @@ export default class EditExercise extends Component {
               onChange={this.onChangeUsername}>
               {
                 this.state.users.map(function(user) {
-                  return <option 
-                    key={user}
-                    value={user}>{user}
-                    </option>;
+                return <option 
+                key={user}
+                value={user}>{user}
+                </option>;
                 })
               }
           </select>
