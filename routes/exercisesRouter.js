@@ -2,13 +2,21 @@
 
 const router = require("express").Router();
 let Exercise = require("../models/exercise.model");
-const { getExercises } = require("../controllers/exercises_controller");
+const { getExercises, addExercises, getExerciseById, deleteExercise, updateExercise } = require("../controllers/exercises_controller");
 
 router.route('/')
     .get(getExercises);
 
 router.route('/add')
     .post(addExercises);
+
+
+router.route('/:id')
+    .get(getExerciseById)
+    .delete(deleteExercise);
+
+router.route('/update/:id')
+    .post(updateExercise);
 
 
 
