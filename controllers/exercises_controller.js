@@ -37,14 +37,57 @@ exports.addExercises = async (req, res, next) => {
     }
 }
 
-exports.addExercises = async (req, res, next) => {
+exports.getExerciseById = async (req, res, next) => {
     try {
+
+        const exercise = await Exercise.findById(req.params.id);
+        
+        if (!exercise) {
+               return res.status(404).json({
+                success: false,
+                error: 'No exercise found'
+               });
+        }
+
+        return res.status(200).json({
+            success: true,
+            data: exercise
+        })
+        
     
     } catch (err) {
      return res.status(500).json({
       success: false,
-      error: '.:.:SERVER ERROR:.:.'
+      error: '.:.:SERVER ERROR GETTING EXERCISE BY ID:.:.'
      });
     }
 }
+
+
+exports.deleteExercise = async (req, res, next) => {
+    try {
+        const exercise = await Exercise.findByIdAndDelete(req.params.id);
+        
+        if (!exercise) {
+               return res.status(404).json({
+                success: false,
+                error: 'No exercise found'
+               });
+        }
+
+        await exercise.remove();
+
+        return res.status(200).json({
+            success: true,
+            data: {}
+        })
+    
+    } catch (err) {
+     return res.status(500).json({
+      success: false,
+      error: '.:.:SERVER ERROR DELETING EXERCISE:.:.'
+     });
+    }
+}
+
 
