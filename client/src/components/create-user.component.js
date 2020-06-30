@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import Axios from "axios";
 
 
+//handling the state with the reducer and state files
+//pull in functions by using global context
+//get rid of axios calls in component files
+//need to get any setting of the state out of component files(handled in state file)
+//using a usestate lifecycle hook 
+
+
 export default class CreateUser extends Component {
   constructor(props) {
     super(props);

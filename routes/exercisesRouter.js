@@ -41,39 +41,39 @@ router.route('/update/:id')
 //         duration,
 //         date,
 //     });
-    newExercise.save()
-        .then(() => res.json('Exercise added'))
-        .catch(err => res.status(400));
-});
+//     newExercise.save()
+//         .then(() => res.json('Exercise added'))
+//         .catch(err => res.status(400));
+// });
 
-// get exercise based on the ID 
-router.route('/:id').get((req, res) => {
-    Exercise.findById(req.params.id)
-        .then(exercise => res.json(exercise))
-        .catch(err => res.status(400));
-});
+// // get exercise based on the ID 
+// router.route('/:id').get((req, res) => {
+//     Exercise.findById(req.params.id)
+//         .then(exercise => res.json(exercise))
+//         .catch(err => res.status(400));
+// });
 
-// delete exercise based on ID
-router.route('/:id').delete((req, res) => {
-    Exercise.findByIdAndDelete(req.params.id)
-        .then(() => res.json("exercise deleted"))
-        .catch(err => res.status(400));
-});
+// // delete exercise based on ID
+// router.route('/:id').delete((req, res) => {
+//     Exercise.findByIdAndDelete(req.params.id)
+//         .then(() => res.json("exercise deleted"))
+//         .catch(err => res.status(400));
+// });
 
-// update exercise based on ID
-router.route('/update/:id').post((req, res) => {
-    Exercise.findById(req.params.id)
-        .then(exercise => {
-            exercise.username = req.body.username;
-            exercise.description = req.body.description;
-            exercise.duration = Number(req.body.duration);
-            exercise.date = Date.parse(req.body.date);
+// // update exercise based on ID
+// router.route('/update/:id').post((req, res) => {
+//     Exercise.findById(req.params.id)
+//         .then(exercise => {
+//             exercise.username = req.body.username;
+//             exercise.description = req.body.description;
+//             exercise.duration = Number(req.body.duration);
+//             exercise.date = Date.parse(req.body.date);
 
-            exercise.save()
-                .then(() => res.json("exercise updated"))
-                .catch(err => res.status(400))
-        })
-        .catch(err => res.status(400));
-});
+//             exercise.save()
+//                 .then(() => res.json("exercise updated"))
+//                 .catch(err => res.status(400))
+//         })
+//         .catch(err => res.status(400));
+// });
 
 module.exports = router;
