@@ -21,9 +21,9 @@ exports.getUsers = async (req, res, next) => {
 
 exports.addUser = async (req, res, next) => {
  try {
-  const { username } = req.body;
+  const { userName } = req.body;
 
-  const user = await User.create(req.body);
+  const user = await User.create(userName);
 
   return res.status(201).json({
    success: true,
