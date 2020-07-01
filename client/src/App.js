@@ -9,10 +9,14 @@ import ExercisesList from "./components/exercises-list.component";
 import EditExercises from "./components/edit-exercises.component";
 import CreateExercise from "./components/create-exercise.component";
 import CreateUser from "./components/create-user.component";
+import { UserProvider } from './context/UserState';
+import { ExerciseProvider } from './context/ExerciseState';
 
 
 function App() {
   return (
+    <UserProvider>
+    <ExerciseProvider>
     <Router>
       <Navbar />
       <br />
@@ -23,6 +27,8 @@ function App() {
       <Route path="/user" component={CreateUser} />
       </div>
     </Router>
+    </ExerciseProvider>
+    </UserProvider>
   );
 }
 
