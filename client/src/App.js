@@ -12,22 +12,21 @@ import CreateUser from "./components/create-user.component";
 import { UserProvider } from './context/UserState';
 import { ExerciseProvider } from './context/ExerciseState';
 
-
 function App() {
   return (
     <UserProvider>
     <ExerciseProvider>
-    <Router>
-      <Navbar />
-      <br />
-      <div className="container">
-      <Route path="/" exact component={ExercisesList} />
-      <Route path="/edit/:id" component={EditExercises} />
-      <Route path="/create" component={CreateExercise} />
-      <Route path="/user" component={CreateUser} />
-      </div>
-    </Router>
-    </ExerciseProvider>
+      <Router>
+        <Navbar />
+        <br />
+        <div className="container">
+        <Route path="/" exact component={ExercisesList} />
+        <Route path="/edit/:id" component={EditExercises} />
+        <Route path="/create" component={CreateExercise} />
+        <Route path="/user" component={CreateUser} />
+        </div>
+        </Router>
+      </ExerciseProvider>
     </UserProvider>
   );
 }

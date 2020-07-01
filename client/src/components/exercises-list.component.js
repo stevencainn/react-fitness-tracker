@@ -1,13 +1,18 @@
 import React, { useContext, useEffect } from 'react';
 import { ExerciseContext } from '../context/ExerciseState';
-import Exercise from './exercise.component';
+import Exercise from './exercise.component'
+
 
 
 const ExercisesList = () => {
-  const { exercises, getExercises, } = useContext(ExerciseContext)
+  
+  const { exercises, getExercises } = useContext(ExerciseContext);
+
   useEffect(() => {
     getExercises();
   }, []);
+
+
 
 
   return (
@@ -30,4 +35,5 @@ const ExercisesList = () => {
     </div>
   )
 }
+
 export default ExercisesList;

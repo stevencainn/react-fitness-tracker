@@ -1,8 +1,9 @@
 // exercisesRouter.js
 
-const router = require("express").Router();
-let Exercise = require("../models/exercise.model");
-const { getExercises, addExercises, getExerciseById, deleteExercise, updateExercise } = require("../controllers/exercises_controller");
+const express = require('express');
+const router =  express.Router();
+const { getExercises, addExercises, getExerciseByID, deleteExercise, updateExercise} = require('../controllers/exercises_controller');
+
 
 router.route('/')
     .get(getExercises);
@@ -10,13 +11,27 @@ router.route('/')
 router.route('/add')
     .post(addExercises);
 
-
 router.route('/:id')
-    .get(getExerciseById)
+    .get(getExerciseByID)
     .delete(deleteExercise);
 
 router.route('/update/:id')
     .post(updateExercise);
+
+
+module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -46,21 +61,21 @@ router.route('/update/:id')
 //         .catch(err => res.status(400));
 // });
 
-// // get exercise based on the ID 
+// get exercise based on the ID 
 // router.route('/:id').get((req, res) => {
 //     Exercise.findById(req.params.id)
 //         .then(exercise => res.json(exercise))
 //         .catch(err => res.status(400));
 // });
 
-// // delete exercise based on ID
+// delete exercise based on ID
 // router.route('/:id').delete((req, res) => {
 //     Exercise.findByIdAndDelete(req.params.id)
 //         .then(() => res.json("exercise deleted"))
 //         .catch(err => res.status(400));
 // });
 
-// // update exercise based on ID
+// update exercise based on ID
 // router.route('/update/:id').post((req, res) => {
 //     Exercise.findById(req.params.id)
 //         .then(exercise => {
@@ -76,4 +91,3 @@ router.route('/update/:id')
 //         .catch(err => res.status(400));
 // });
 
-module.exports = router;

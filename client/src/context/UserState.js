@@ -37,6 +37,7 @@ export const UserProvider = ({ children }) => {
 
  // == addUser
  async function addUser(newUser) {
+  console.log("newUser: ", newUser);
   const config = {
    headers: {
     'Content-Type': 'application/json'
@@ -44,7 +45,7 @@ export const UserProvider = ({ children }) => {
   }
   try {
    const res = await axios.post('/users/add', newUser, config);
-
+   console.log("user state response: ", res);
    dispatch({
     type: 'ADD_USER',
     payload: res.data.data
