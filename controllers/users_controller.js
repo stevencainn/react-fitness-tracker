@@ -19,8 +19,10 @@ exports.getUsers = async (req, res, next) => {
 }
 
 exports.addUser = async (req, res, next) => {
+    
  try {
-  const { userName } = req.body;
+  const userName = req.body;
+
   const user = await User.create(userName);
 
   return res.status(201).json({

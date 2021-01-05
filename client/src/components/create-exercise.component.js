@@ -27,10 +27,12 @@ export default class CreateExercise extends Component {
   componentDidMount() {
     Axios.get('/users')
     .then(response =>{
-      if(response.data.length > 0){
+      console.log(response.data)
+      console.log(response.data.data);
+      if(response.data.data.length > 0){
         this.setState({
-          users: response.data.map(user => user.username),
-          username: response.data[0].username
+          users: response.data.data.map(user => user.username),
+          username: response.data.data.username
         })
       }
     })
