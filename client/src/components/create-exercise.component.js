@@ -27,12 +27,10 @@ export default class CreateExercise extends Component {
   componentDidMount() {
     Axios.get('/users')
     .then(response =>{
-      console.log(response.data)
-      console.log(response.data.data);
       if(response.data.data.length > 0){
         this.setState({
           users: response.data.data.map(user => user.username),
-          username: response.data.data.username
+          username: response.data.data[0].username
         })
       }
     })
@@ -68,6 +66,7 @@ export default class CreateExercise extends Component {
   onSubmit(e) {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
+    console.log(this.state.users);
 
     const exercise = {
       username: this.state.username,
@@ -80,7 +79,7 @@ export default class CreateExercise extends Component {
 
     Axios.post('/exercises/add', exercise)
     .then(res => console.log(res.data));
-    window.location = "/";
+    // window.location = "/";
    
   };
 
@@ -97,7 +96,8 @@ export default class CreateExercise extends Component {
               value={this.state.username}
               onChange={this.onChangeUsername}>
               {
-                this.state.users.map(function (user) {
+                this.state.users.map((user) => {
+                  //console.log(user)
                   return <option
                     key={user}
                     value={user}>
