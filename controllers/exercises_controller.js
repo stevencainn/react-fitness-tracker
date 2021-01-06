@@ -19,7 +19,6 @@ exports.getExercises = async (req, res, next) => {
 }
 
 exports.addExercises = async (req, res, next) => {
-    console.log("hello from add Exercise");
  try {
   const { username, description, duration, date } = req.body;
   const exercise = await Exercise.create(req.body);
